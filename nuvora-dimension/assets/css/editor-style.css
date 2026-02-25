@@ -1,0 +1,27 @@
+/**
+ * Nuvora Theme — Gutenberg Editor Styles
+ * Gives the block editor a feel closer to the dark theme.
+ */
+
+.editor-styles-wrapper {
+	background-color: #1e2326 !important;
+	color: #fff !important;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	color: #fff;
+}
+
+.editor-styles-wrapper p,
+.editor-styles-wrapper li {
+	color: rgba(255,255,255,0.8);
+}
+
+.editor-styles-wrapper a {
+	color: #7fa9d8;
+}

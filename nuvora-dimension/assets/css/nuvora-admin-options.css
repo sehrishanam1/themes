@@ -1,0 +1,343 @@
+/* ── Nuvora Theme Options Admin Styles ── */
+* { box-sizing: border-box; }
+
+body.toplevel_page_nuvora-options,
+body.appearance_page_nuvora-options {
+    background: #f0f0f1;
+}
+
+#dim-wrap {
+    display: flex;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Sidebar */
+#dim-sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: #1e2327;
+    color: #fff;
+    padding: 0;
+    position: sticky;
+    top: 32px;
+    height: calc(100vh - 32px);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+#dim-sidebar .dim-brand {
+    background: #111;
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: #fff;
+    border-bottom: 1px solid #333;
+}
+
+#dim-sidebar .dim-brand span {
+    font-size: 11px;
+    font-weight: 400;
+    color: #888;
+    display: block;
+    margin-top: 2px;
+}
+
+#dim-sidebar nav ul {
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+}
+
+#dim-sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: #adb5bd;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+}
+
+#dim-sidebar nav ul li a:hover,
+#dim-sidebar nav ul li.active a {
+    color: #fff;
+    background: rgba(255,255,255,.06);
+    border-left-color: #2271b1;
+}
+
+#dim-sidebar nav ul li a .dim-nav-icon {
+    font-size: 14px;
+    width: 18px;
+    text-align: center;
+    opacity: .8;
+}
+
+/* Save bar */
+#dim-save-bar {
+    background: #1e2327;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 32px;
+    z-index: 100;
+    border-bottom: 1px solid #333;
+}
+
+#dim-save-bar .dim-save-title {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#dim-save-bar .button-primary {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    padding: 7px 22px;
+    height: auto;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#dim-save-bar .button-primary:hover {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+/* Content */
+#dim-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#dim-panels {
+    padding: 24px 28px;
+    flex: 1;
+}
+
+/* Panels */
+.dim-panel {
+    display: none;
+}
+.dim-panel.active {
+    display: block;
+}
+
+.dim-panel-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e2327;
+    margin: 0 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #e2e4e7;
+}
+
+/* Setting rows */
+.dim-setting {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.dim-setting:last-child {
+    border-bottom: none;
+}
+
+.dim-setting-label {
+    padding-top: 6px;
+}
+
+.dim-setting-label strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e2327;
+    margin-bottom: 3px;
+}
+
+.dim-setting-label small {
+    font-size: 11px;
+    color: #787c82;
+    line-height: 1.4;
+}
+
+.dim-setting-control input[type="text"],
+.dim-setting-control input[type="url"],
+.dim-setting-control input[type="email"],
+.dim-setting-control textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #1e2327;
+    background: #fff;
+    transition: border-color .15s;
+}
+
+.dim-setting-control input:focus,
+.dim-setting-control textarea:focus {
+    border-color: #2271b1;
+    outline: none;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* Link helper */
+.dim-link-helper {
+    margin-top: 8px;
+    background: #f6f7f7;
+    border: 1px solid #e2e4e7;
+    border-radius: 4px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dim-link-helper label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2271b1;
+    white-space: nowrap;
+}
+
+.dim-link-helper input {
+    height: 30px !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+}
+
+.dim-link-helper .dim-link-text { width: 120px !important; }
+.dim-link-helper .dim-link-url  { width: 180px !important; }
+
+.dim-link-helper select {
+    height: 30px;
+    font-size: 12px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 0 6px;
+    background: #fff;
+}
+
+.dim-link-helper .button {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px;
+    font-size: 12px;
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Icon preview */
+.dim-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dim-icon-preview-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #1e2327;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #1e2327;
+    flex-shrink: 0;
+}
+
+/* BG image preview */
+.dim-bg-preview {
+    margin-top: 10px;
+    border-radius: 6px;
+    overflow: hidden;
+    max-height: 140px;
+}
+
+.dim-bg-preview img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Color picker fix */
+.wp-picker-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Card wrapper for sections within a panel */
+.dim-card {
+    background: #fff;
+    border: 1px solid #e2e4e7;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.dim-card-head {
+    background: #f6f7f7;
+    border-bottom: 1px solid #e2e4e7;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e2327;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dim-card-body {
+    padding: 4px 20px 12px;
+}
+
+/* Nav tip box */
+.dim-info-box {
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #1e2327;
+    line-height: 1.6;
+}
+
+.dim-info-box ol {
+    margin: 8px 0 0 18px;
+    color: #555;
+}
+
+/* Notices */
+.dim-notice {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    padding: 12px 18px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #155724;
+}

@@ -1,0 +1,78 @@
+/**
+ * Nuvora Panel Block — Editor Styles
+ */
+.nuvora-panel-editor-preview {
+	background: #1b1f22;
+	border: 2px dashed rgba(255,255,255,0.2);
+	border-radius: 6px;
+	padding: 1.5em;
+	color: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nuvora-panel-editor-header {
+	border-bottom: 1px solid rgba(255,255,255,0.15);
+	padding-bottom: 0.75em;
+	margin-bottom: 1em;
+}
+
+.nuvora-panel-editor-id {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	opacity: 0.5;
+	margin-bottom: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.nuvora-panel-editor-title {
+	color: #fff !important;
+	font-size: 1.3em !important;
+	margin: 0 !important;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	border-bottom: 2px solid #fff;
+	padding-bottom: 0.3em;
+	display: inline-block;
+}
+
+.nuvora-panel-editor-image {
+	margin: 1em 0;
+}
+
+.nuvora-panel-editor-image img {
+	width: 100%;
+	max-height: 200px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.nuvora-panel-editor-content {
+	color: rgba(255,255,255,0.8) !important;
+	min-height: 60px;
+	font-size: 0.95em;
+	line-height: 1.65;
+}
+
+.nuvora-panel-editor-content .block-editor-rich-text__editable {
+	color: rgba(255,255,255,0.8) !important;
+}
+
+.nuvora-panel-editor-content [data-placeholder]::before {
+	color: rgba(255,255,255,0.3) !important;
+}
+
+.nuvora-panel-editor-notice {
+	background: rgba(255,255,255,0.08);
+	border: 1px dashed rgba(255,255,255,0.2);
+	padding: 0.5em 0.75em;
+	border-radius: 4px;
+	font-size: 0.85em;
+	opacity: 0.8;
+	margin-top: 0.75em;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}

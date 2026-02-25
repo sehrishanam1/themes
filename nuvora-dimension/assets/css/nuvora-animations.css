@@ -1,0 +1,139 @@
+/*
+ * Dimension WP Theme — Pure CSS Animation System
+ * Replaces the JS-dependent is-preload mechanism entirely.
+ * Everything animates in automatically via @keyframes on page load.
+ */
+
+/* ── Step 1: Initially hide everything (replaces is-preload state) ── */
+#header,
+#footer {
+    animation-fill-mode: both;
+}
+
+/* ── Background: fades from black to transparent (2.5s, starts immediately) ── */
+@keyframes dim-bg-reveal {
+    0%   { background-color: #000000; }
+    100% { background-color: transparent; }
+}
+#bg:before {
+    animation: dim-bg-reveal 2.5s ease-in-out 0.1s both;
+}
+
+/* ── Header: unblur + fade in (replaces blur(0.125rem) -> no blur) ── */
+@keyframes dim-header-reveal {
+    0%   { filter: blur(0.125rem); opacity: 0.3; }
+    100% { filter: blur(0); opacity: 1; }
+}
+#header {
+    animation: dim-header-reveal 0.6s ease-in-out 0.2s both;
+}
+
+/* ── Header children (logo, nav): opacity 0 -> 1 ── */
+@keyframes dim-fade-in {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+#header > * {
+    animation: dim-fade-in 0.5s ease-in-out 0.4s both;
+}
+
+/* ── Header .content .inner: expand from collapsed (max-height + padding) ── */
+@keyframes dim-expand-inner {
+    0% {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        opacity: 0;
+    }
+    100% {
+        max-height: 40rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        opacity: 1;
+    }
+}
+#header .content .inner {
+    animation: dim-expand-inner 0.75s ease 0.65s both;
+    /* Override the transition-delay set in main.css so our keyframe controls timing */
+    transition-delay: 0s !important;
+}
+
+/* ── Footer: fade in ── */
+@keyframes dim-footer-reveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+#footer {
+    animation: dim-footer-reveal 0.5s ease-in-out 0.5s both;
+}
+
+/* ── When article is visible, header+footer blur out (keep original behaviour) ── */
+body.is-article-visible #header {
+    transform: scale(0.95);
+    filter: blur(0.1rem);
+    opacity: 0;
+    /* Override the keyframe so article-visible state wins */
+    animation: none;
+}
+body.is-article-visible #footer {
+    transform: scale(0.95);
+    filter: blur(0.1rem);
+    opacity: 0;
+    animation: none;
+}
+
+/* ── Make sure transitions still work after animations complete ── */
+/* (main.css already defines these transitions, just ensure they aren't blocked) */
+body:not(.is-preload) #header {
+    transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+}
+
+/* ── Page content inside panels ── */
+#main article .page-content {
+	color: inherit;
+	line-height: 1.8;
+}
+
+#main article .page-content p {
+	margin: 0 0 1.5rem 0;
+}
+
+#main article .page-content h1,
+#main article .page-content h2,
+#main article .page-content h3,
+#main article .page-content h4 {
+	color: #fff;
+	margin: 0 0 1rem 0;
+	font-weight: 600;
+}
+
+#main article .page-content ul,
+#main article .page-content ol {
+	margin: 0 0 1.5rem 1.5rem;
+}
+
+#main article .page-content li {
+	margin-bottom: 0.4rem;
+}
+
+#main article .page-content img {
+	max-width: 100%;
+	border-radius: 4px;
+	margin-bottom: 1rem;
+}
+
+#main article .page-content a {
+	color: #fff;
+	border-bottom: dotted 1px rgba(255,255,255,.5);
+	text-decoration: none;
+}
+
+#main article .page-content a:hover {
+	border-bottom-color: transparent;
+}
+
+/* Remove WP default padding/margin injected by block styles */
+#main article .page-content .wp-block-paragraph,
+#main article .page-content .wp-block-heading {
+	margin-bottom: 1rem;
+}

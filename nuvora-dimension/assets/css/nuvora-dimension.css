@@ -1,0 +1,1097 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   NUVORA DIMENSION — Theme Stylesheet
+   Separate from style.css per WordPress best practice separation.
+   All visual styling lives here.
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
+:root {
+	--nd-accent:          #7ecbff;
+	--nd-accent-glow:     rgba(126, 203, 255, 0.18);
+	--nd-accent-border:   rgba(126, 203, 255, 0.35);
+	--nd-bg-panel:        rgba(12, 16, 22, 0.88);
+	--nd-bg-panel-edge:   rgba(30, 40, 58, 0.72);
+	--nd-text:            rgba(255, 255, 255, 0.9);
+	--nd-text-muted:      rgba(255, 255, 255, 0.45);
+	--nd-text-dim:        rgba(255, 255, 255, 0.22);
+	--nd-border:          rgba(255, 255, 255, 0.08);
+	--nd-border-mid:      rgba(255, 255, 255, 0.15);
+	--nd-radius:          8px;
+	--nd-radius-lg:       14px;
+	--nd-transition:      0.35s cubic-bezier(0.4, 0, 0.2, 1);
+	--nd-panel-max:       48rem;
+	--nd-shadow-heavy:    0 32px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4);
+	--nd-shadow-soft:     0 4px 20px rgba(0,0,0,0.3);
+}
+:root :where(.wp-block-image figcaption){
+	color: white;
+}
+/* ─── Standalone Pages (single / page / index) ──────────────────────────────── */
+
+body.nuvora-standalone {
+	background: #0c1016;
+}
+
+body.nuvora-standalone #main {
+	display: flex !important;
+	padding: 5rem 1.5rem 4rem;
+	min-height: 100vh;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+body.nuvora-standalone #main article {
+	opacity: 1 !important;
+	transform: none !important;
+	display: block !important;
+	width: var(--nd-panel-max);
+	max-width: 100%;
+}
+
+/* ─── Post Meta Bar ─────────────────────────────────────────────────────────── */
+
+.nuvora-post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3em 0.6em;
+	font-size: 0.68rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+	margin-bottom: 1.6em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid var(--nd-border);
+}
+
+.nuvora-post-meta a {
+	color: inherit;
+	border-bottom: none;
+	text-decoration: none;
+	transition: color var(--nd-transition);
+}
+.nuvora-post-meta a:hover { color: var(--nd-accent); }
+
+.nuvora-post-meta__category {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3em;
+	background: var(--nd-accent-glow);
+	border: 1px solid var(--nd-accent-border);
+	border-radius: 50px;
+	padding: 0.15em 0.65em;
+	color: var(--nd-accent);
+	font-size: 0.62rem;
+}
+
+/* ─── Post Navigation ───────────────────────────────────────────────────────── */
+
+.nuvora-post-nav {
+	margin-top: 2.5em;
+	padding-top: 1.5em;
+	border-top: 1px solid var(--nd-border);
+}
+
+.nuvora-post-nav .nav-links {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1em;
+}
+
+.nuvora-post-nav .nav-links a {
+	display: block;
+	padding: 0.9em 1.1em;
+	background: rgba(255,255,255,0.03);
+	border: 1px solid var(--nd-border);
+	border-radius: var(--nd-radius);
+	color: var(--nd-text-muted);
+	border-bottom: none;
+	text-decoration: none;
+	font-size: 0.78rem;
+	transition: background var(--nd-transition), border-color var(--nd-transition), color var(--nd-transition);
+}
+.nuvora-post-nav .nav-links a:hover {
+	background: var(--nd-accent-glow);
+	border-color: var(--nd-accent-border);
+	color: var(--nd-accent);
+}
+
+.nuvora-post-nav .nav-previous a::before {
+	content: '← ';
+	opacity: 0.6;
+}
+.nuvora-post-nav .nav-next a::after {
+	content: ' →';
+	opacity: 0.6;
+}
+.nuvora-post-nav .nav-next {
+	text-align: right;
+}
+
+/* ─── Back Button ───────────────────────────────────────────────────────────── */
+
+.nuvora-back-btn {
+	margin-top: 2em !important;
+	display: inline-flex !important;
+	align-items: center;
+	gap: 0.45em;
+}
+.nuvora-back-btn::before {
+	content: '←';
+	font-size: 1.1em;
+	line-height: 1;
+}
+
+/* ─── Pagination ─────────────────────────────────────────────────────────────── */
+
+.nuvora-pagination {
+	margin-top: 2em;
+	display: flex;
+	justify-content: center;
+	gap: 0.4em;
+}
+
+/* ─── Standalone Post Cards ─────────────────────────────────────────────────── */
+
+.nuvora-post-card {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0;
+	padding-bottom: 2em;
+	margin-bottom: 2em;
+	border-bottom: 1px solid var(--nd-border);
+	position: relative;
+}
+
+.nuvora-post-card:last-of-type {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.nuvora-post-card__image {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--nd-radius);
+	margin-bottom: 1em;
+}
+
+.nuvora-post-card__image img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.5s ease;
+}
+
+.nuvora-post-card:hover .nuvora-post-card__image img {
+	transform: scale(1.04);
+}
+
+.nuvora-post-card__image::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+	border-radius: var(--nd-radius);
+}
+
+.nuvora-post-card__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.3em 0.5em;
+	font-size: 0.66rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+	margin-bottom: 0.5em;
+}
+
+.nuvora-post-card__meta a {
+	color: inherit;
+	border-bottom: none;
+	text-decoration: none;
+	transition: color var(--nd-transition);
+}
+.nuvora-post-card__meta a:hover { color: var(--nd-accent); }
+
+.nuvora-post-card__sep { opacity: 0.35; }
+
+.nuvora-post-card__title {
+	font-size: 1.05rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	margin: 0 0 0.6em;
+	border-bottom: none;
+	line-height: 1.4;
+}
+
+.nuvora-post-card__title a {
+	color: var(--nd-text);
+	border-bottom: none;
+	text-decoration: none;
+	transition: color var(--nd-transition);
+}
+.nuvora-post-card__title a:hover { color: var(--nd-accent); }
+
+.nuvora-post-card__excerpt {
+	font-size: 0.82rem;
+	line-height: 1.72;
+	color: rgba(255,255,255,0.58);
+	margin: 0 0 0.9em;
+}
+
+.nuvora-post-card__btn {
+	font-size: 0.68rem !important;
+	padding: 0.45em 1.1em !important;
+	letter-spacing: 0.08em;
+}
+
+/* Prevent WP block query from leaking posts into panels */
+#main article .wp-block-query,
+#main article .wp-block-post-template,
+#main article .wp-block-latest-posts { display: none !important; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BLOG PANEL  (Dimension overlay panel — front-page)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+article.nuvora-blog-panel {
+	width: calc(var(--nd-panel-max) + 4rem) !important;
+	max-height: 90vh;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(126, 203, 255, 0.25) rgba(255,255,255,0.03);
+}
+
+article.nuvora-blog-panel::-webkit-scrollbar       { width: 4px; }
+article.nuvora-blog-panel::-webkit-scrollbar-track  { background: rgba(255,255,255,0.03); }
+article.nuvora-blog-panel::-webkit-scrollbar-thumb  {
+	background: rgba(126, 203, 255, 0.25);
+	border-radius: 4px;
+}
+
+/* ── Blog List Wrapper ────────────────────────────────────────────────────────── */
+
+.nuvora-blog-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+/* ── Blog Item ──────────────────────────────────────────────────────────────── */
+
+.nuvora-blog-item {
+	display: grid;
+	grid-template-columns: 120px 1fr;
+	gap: 1.2rem;
+	align-items: start;
+	padding: 1.4rem 0;
+	position: relative;
+}
+
+.nuvora-blog-item + .nuvora-blog-item {
+	border-top: 1px solid var(--nd-border);
+}
+
+.nuvora-blog-item:last-child {
+	padding-bottom: 0;
+}
+
+/* Full-width image layout override for items with large images */
+.nuvora-blog-item--featured {
+	grid-template-columns: 1fr;
+	margin-bottom: 0.5rem;
+}
+
+/* No featured image — collapse to single column so body fills full width */
+.nuvora-blog-item--no-image {
+	grid-template-columns: 1fr;
+	padding-left: 1rem;
+	border-left: 3px solid var(--nd-accent-border);
+}
+
+.nuvora-blog-item--no-image .nuvora-blog-item__body {
+	gap: 0.45rem;
+}
+
+.nuvora-blog-item--no-image .nuvora-blog-item__title {
+	font-size: 1rem;
+}
+
+.nuvora-blog-item--no-image .nuvora-blog-item__excerpt {
+	-webkit-line-clamp: 3;
+}
+
+/* ── Blog Item: Thumbnail Column ────────────────────────────────────────────── */
+
+.nuvora-blog-item__thumb {
+	display: block;
+	width: 120px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: var(--nd-radius);
+	flex-shrink: 0;
+	position: relative;
+}
+
+.nuvora-blog-item__thumb::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, transparent 60%, rgba(0,0,0,0.4));
+	border-radius: var(--nd-radius);
+}
+
+.nuvora-blog-item__thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform var(--nd-transition);
+}
+
+.nuvora-blog-item:hover .nuvora-blog-item__thumb img {
+	transform: scale(1.08);
+}
+
+/* ── Blog Item: No Thumbnail (full-width featured image) ─────────────────────── */
+
+.nuvora-blog-item__img-wrap {
+	display: block;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	border-radius: var(--nd-radius);
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.nuvora-blog-item__img-wrap::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,0.5));
+}
+
+.nuvora-blog-item__img-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform var(--nd-transition);
+}
+
+.nuvora-blog-item:hover .nuvora-blog-item__img-wrap img {
+	transform: scale(1.04);
+}
+
+/* ── Blog Item: Body ─────────────────────────────────────────────────────────── */
+
+.nuvora-blog-item__body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	min-width: 0;
+}
+
+/* ── Blog Item: Meta ─────────────────────────────────────────────────────────── */
+
+.nuvora-blog-item__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.25rem 0.4rem;
+	font-size: 0.63rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+	line-height: 1;
+}
+
+.nuvora-blog-item__meta a {
+	color: inherit;
+	border-bottom: none;
+	text-decoration: none;
+	transition: color var(--nd-transition);
+}
+.nuvora-blog-item__meta a:hover { color: var(--nd-accent); }
+
+.nuvora-blog-item__sep { opacity: 0.3; }
+
+.nuvora-blog-item__cat-badge {
+	display: inline-block;
+	background: var(--nd-accent-glow);
+	border: 1px solid var(--nd-accent-border);
+	color: var(--nd-accent);
+	border-radius: 50px;
+	padding: 0.1em 0.55em;
+	font-size: 0.58rem;
+	letter-spacing: 0.07em;
+}
+
+/* ── Blog Item: Title ───────────────────────────────────────────────────────── */
+
+.nuvora-blog-item__title {
+	font-size: 0.92rem;
+	font-weight: 600;
+	line-height: 1.4;
+	margin: 0;
+	border-bottom: none !important;
+}
+
+.nuvora-blog-item__title a {
+	color: var(--nd-text);
+	border-bottom: none !important;
+	text-decoration: none;
+	transition: color var(--nd-transition);
+}
+.nuvora-blog-item__title a:hover { color: var(--nd-accent); }
+
+/* ── Blog Item: Excerpt ─────────────────────────────────────────────────────── */
+
+.nuvora-blog-item__excerpt {
+	font-size: 0.76rem;
+	line-height: 1.68;
+	color: rgba(255,255,255,0.52);
+	margin: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* ── Blog Item: Button ──────────────────────────────────────────────────────── */
+
+.nuvora-blog-item__btn.button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	font-size: 0.65rem !important;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 0.38em 0.9em !important;
+	border-radius: 4px;
+	margin-top: 0.2rem;
+	width: fit-content;
+}
+
+/* ── Pagination Section ─────────────────────────────────────────────────────── */
+
+.nd-pagination-wrap {
+	margin-top: 1.6rem;
+	padding-top: 1.2rem;
+	border-top: 1px solid var(--nd-border);
+}
+
+.nd-pagination-controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.nd-pagination-info {
+	font-size: 0.65rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+	text-align: center;
+	flex: 1;
+}
+
+.nd-page-btn.button {
+	font-size: 0.68rem !important;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	padding: 0.42em 1.1em !important;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.nd-page-btn--disabled {
+	font-size: 0.68rem;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	padding: 0.42em 1.1em;
+	color: var(--nd-text-muted);
+	opacity: 0.3;
+	white-space: nowrap;
+	cursor: default;
+}
+
+/* Keep old loadmore wrap in case it shows anywhere */
+.nd-loadmore-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6rem;
+	margin-top: 1.6rem;
+	padding-top: 1.4rem;
+	border-top: 1px solid var(--nd-border);
+}
+
+#nuvora-load-more.button {
+	font-size: 0.73rem !important;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 0.55em 2.2em !important;
+	cursor: pointer;
+	transition: opacity var(--nd-transition), background var(--nd-transition);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+#nuvora-load-more.button::after {
+	content: '↓';
+	font-size: 0.9em;
+}
+
+#nuvora-load-more:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+.nd-loadmore-count {
+	font-size: 0.62rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--nd-text-dim);
+}
+
+/* ── Progress Bar ───────────────────────────────────────────────────────────── */
+
+.nd-progress-bar {
+	width: 100%;
+	height: 2px;
+	background: var(--nd-border);
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.nd-progress-bar__fill {
+	height: 100%;
+	background: linear-gradient(90deg, var(--nd-accent), rgba(126, 203, 255, 0.5));
+	border-radius: 2px;
+	transition: width 0.4s ease;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   NUVORA DIMENSION — PANEL CHROME ENHANCEMENTS
+   These augment main.css with extra structure on top of the base Dimension layout.
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Panel Header Strip ─────────────────────────────────────────────────────── */
+
+.nd-panel-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 1.2rem;
+	margin-bottom: 1.6rem;
+	border-bottom: 1px solid var(--nd-border-mid);
+	position: relative;
+}
+
+.nd-panel-header::after {
+	content: '';
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 3rem;
+	height: 2px;
+	background: var(--nd-accent);
+	border-radius: 2px;
+}
+
+.nd-panel-header__eyebrow {
+	font-size: 0.6rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--nd-accent);
+	margin-bottom: 0.3em;
+}
+
+.nd-panel-header__title {
+	font-size: 1.15rem;
+	font-weight: 600;
+	color: var(--nd-text);
+	margin: 0;
+	line-height: 1.3;
+}
+
+.nd-panel-header__badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 8px;
+	background: var(--nd-accent-glow);
+	border: 1px solid var(--nd-accent-border);
+	color: var(--nd-accent);
+	font-size: 1rem;
+	flex-shrink: 0;
+}
+
+/* ── Stat Grid (for panels with metrics/numbers) ─────────────────────────────── */
+
+.nd-stat-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+	gap: 0.8rem;
+	margin: 1.4rem 0;
+}
+
+.nd-stat-card {
+	background: rgba(255,255,255,0.03);
+	border: 1px solid var(--nd-border);
+	border-radius: var(--nd-radius);
+	padding: 1rem 0.9rem;
+	text-align: center;
+	transition: border-color var(--nd-transition), background var(--nd-transition);
+}
+
+.nd-stat-card:hover {
+	border-color: var(--nd-accent-border);
+	background: var(--nd-accent-glow);
+}
+
+.nd-stat-card__value {
+	display: block;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--nd-accent);
+	line-height: 1;
+	margin-bottom: 0.35em;
+}
+
+.nd-stat-card__label {
+	font-size: 0.6rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+}
+
+/* ── Tag / Skill Chips ──────────────────────────────────────────────────────── */
+
+.nd-tag-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem;
+	margin: 0.8rem 0;
+}
+
+.nd-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3em;
+	padding: 0.28em 0.75em;
+	border-radius: 50px;
+	font-size: 0.63rem;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	background: rgba(255,255,255,0.05);
+	border: 1px solid var(--nd-border-mid);
+	color: var(--nd-text-muted);
+	transition: background var(--nd-transition), border-color var(--nd-transition), color var(--nd-transition);
+}
+
+.nd-tag:hover,
+.nd-tag--active {
+	background: var(--nd-accent-glow);
+	border-color: var(--nd-accent-border);
+	color: var(--nd-accent);
+}
+
+/* ── Timeline Block ─────────────────────────────────────────────────────────── */
+
+.nd-timeline {
+	position: relative;
+	padding-left: 1.6rem;
+	margin: 1.2rem 0;
+}
+
+.nd-timeline::before {
+	content: '';
+	position: absolute;
+	left: 5px;
+	top: 6px;
+	bottom: 6px;
+	width: 1px;
+	background: linear-gradient(to bottom, var(--nd-accent), transparent);
+}
+
+.nd-timeline__item {
+	position: relative;
+	padding-bottom: 1.4rem;
+}
+
+.nd-timeline__item:last-child {
+	padding-bottom: 0;
+}
+
+.nd-timeline__item::before {
+	content: '';
+	position: absolute;
+	left: -1.6rem;
+	top: 5px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--nd-accent);
+	box-shadow: 0 0 8px var(--nd-accent);
+}
+
+.nd-timeline__period {
+	font-size: 0.62rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--nd-accent);
+	margin-bottom: 0.25em;
+}
+
+.nd-timeline__role {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--nd-text);
+	margin-bottom: 0.15em;
+}
+
+.nd-timeline__org {
+	font-size: 0.75rem;
+	color: var(--nd-text-muted);
+	margin-bottom: 0.45em;
+}
+
+.nd-timeline__desc {
+	font-size: 0.78rem;
+	line-height: 1.65;
+	color: rgba(255,255,255,0.5);
+}
+
+/* ── Divider with Label ─────────────────────────────────────────────────────── */
+
+.nd-divider {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	margin: 1.6rem 0;
+}
+
+.nd-divider::before,
+.nd-divider::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: var(--nd-border);
+}
+
+.nd-divider__text {
+	font-size: 0.6rem;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	color: var(--nd-text-dim);
+	white-space: nowrap;
+}
+
+/* ── Contact Form Enhancements ──────────────────────────────────────────────── */
+
+.nd-contact-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.9rem 1.2rem;
+}
+
+.nd-contact-split--full {
+	grid-column: 1 / -1;
+}
+
+.nd-form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.nd-form-group label {
+	font-size: 0.65rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--nd-text-muted);
+}
+
+.nd-form-status {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.8em 1em;
+	border-radius: var(--nd-radius);
+	font-size: 0.78rem;
+	margin-top: 0.8em;
+}
+
+.nd-form-status--success {
+	background: rgba(72, 200, 120, 0.12);
+	border: 1px solid rgba(72, 200, 120, 0.3);
+	color: #48c878;
+}
+
+.nd-form-status--error {
+	background: rgba(255, 80, 80, 0.1);
+	border: 1px solid rgba(255, 80, 80, 0.25);
+	color: #ff7070;
+}
+
+/* ── Nav Indicator (active panel highlight) ─────────────────────────────────── */
+
+#header nav ul li a {
+	position: relative;
+}
+
+#header nav ul li a::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%) scaleX(0);
+	width: 16px;
+	height: 2px;
+	background: var(--nd-accent);
+	border-radius: 1px;
+	transition: transform var(--nd-transition);
+}
+
+
+
+/* ── Logo Pulse Ring ────────────────────────────────────────────────────────── */
+
+#header .logo {
+	position: relative;
+}
+
+#header .logo::before {
+	content: '';
+	position: absolute;
+	inset: -8px;
+	border-radius: 50%;
+	border: 1px solid var(--nd-accent-border);
+	opacity: 0;
+	animation: nd-pulse-ring 3s ease-in-out infinite;
+}
+
+@keyframes nd-pulse-ring {
+	0%   { opacity: 0; transform: scale(0.9); }
+	50%  { opacity: 1; transform: scale(1.05); }
+	100% { opacity: 0; transform: scale(1.1); }
+}
+
+/* ── Panel Close Button Custom Style ────────────────────────────────────────── */
+
+#main > article > .close {
+	transition: background var(--nd-transition), color var(--nd-transition);
+}
+
+/* ── Panel Scroll Indicator ─────────────────────────────────────────────────── */
+
+.nd-scroll-hint {
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-size: 0.6rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--nd-text-dim);
+	margin-top: 1.5rem;
+	justify-content: center;
+}
+
+.nd-scroll-hint__icon {
+	animation: nd-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes nd-bounce {
+	0%, 100% { transform: translateY(0); }
+	50%       { transform: translateY(3px); }
+}
+
+/* ── Image Caption ──────────────────────────────────────────────────────────── */
+
+.nd-image-caption {
+	font-size: 0.67rem;
+	letter-spacing: 0.06em;
+	color: var(--nd-text-muted);
+	text-align: center;
+	margin-top: -0.4rem;
+	margin-bottom: 1.2rem;
+}
+
+/* ── Social Icons Enhanced ──────────────────────────────────────────────────── */
+
+#footer .icons li a.icon {
+	transition: color var(--nd-transition), transform var(--nd-transition), text-shadow var(--nd-transition);
+}
+
+#footer .icons li a.icon:hover {
+	text-shadow: 0 0 12px var(--nd-accent);
+	transform: translateY(-2px);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 736px) {
+	article.nuvora-blog-panel { width: 100% !important; }
+
+	.nuvora-blog-item {
+		grid-template-columns: 1fr;
+	}
+
+	.nuvora-blog-item__thumb {
+		width: 100%;
+		height: 160px;
+	}
+
+	.nd-contact-split {
+		grid-template-columns: 1fr;
+	}
+
+	.nd-stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.nuvora-post-nav .nav-links {
+		grid-template-columns: 1fr;
+	}
+
+	.nuvora-blog-item__title { font-size: 0.88rem; }
+}
+
+@media (max-width: 480px) {
+	.nd-stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ADMIN PANEL — Nuvora Dimension Options Page
+   (These were previously in nuvora-admin-options.css — kept there for modularity)
+═══════════════════════════════════════════════════════════════════════════════ */
+/* Admin styles remain in nuvora-admin-options.css — not duplicated here */
+
+/* ─── Sticky / Pinned Post ──────────────────────────────────────────────────── */
+/* Covers both index.php (.nuvora-post-sticky) and front-page.php blog panel (.nuvora-blog-item--sticky) */
+.nuvora-post-sticky,
+.nuvora-blog-item--sticky {
+	position: relative;
+	border: 2px solid rgba(255, 255, 255, 0.4) !important;
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.07) !important;
+	box-shadow: 0 0 28px rgba(255, 255, 255, 0.10);
+}
+
+.nuvora-sticky-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(255, 255, 255, 0.18);
+	color: #fff;
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 4px 14px;
+	border-radius: 4px;
+	margin-bottom: 14px;
+	grid-column: 1 / -1;
+}
+
+.nuvora-sticky-badge .fas {
+	font-size: 0.68rem;
+	transform: rotate(45deg);
+}
+
+/* -------------------------------  Gallery Styling ----------------------------------- */
+
+/* ── WordPress Core Gallery ─────────────────────────────────────────────────── */
+.nuvora-post-content .gallery {
+    display: grid;
+    grid-template-columns: repeat(var(--gallery-cols, 3), 1fr);
+    gap: 4px;
+    margin: 1.5rem 0;
+}
+
+.nuvora-post-content .gallery-columns-1 { --gallery-cols: 1; }
+.nuvora-post-content .gallery-columns-2 { --gallery-cols: 2; }
+.nuvora-post-content .gallery-columns-3 { --gallery-cols: 3; }
+.nuvora-post-content .gallery-columns-4 { --gallery-cols: 4; }
+.nuvora-post-content .gallery-columns-5 { --gallery-cols: 5; }
+.nuvora-post-content .gallery-columns-6 { --gallery-cols: 6; }
+
+.nuvora-post-content .gallery-item {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+}
+
+.nuvora-post-content .gallery-icon a {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+    border-bottom: none !important;
+}
+
+.nuvora-post-content .gallery-icon img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: brightness(0.88);
+}
+
+.nuvora-post-content .gallery-item:hover .gallery-icon img {
+    transform: scale(1.06);
+    filter: brightness(1);
+}
+
+.nuvora-post-content .gallery-caption {
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 1.2rem 0.5rem 0.4rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 4px 4px;
+}
+
+.nuvora-post-content .gallery-item:hover .gallery-caption {
+    opacity: 1;
+}
+
+/* ── Pre / Code blocks ───────────────────────────────────────────────────────── */
+pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow-x: auto;
+    font-family: inherit;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    color: rgba(255, 255, 255, 0.8);
+}
